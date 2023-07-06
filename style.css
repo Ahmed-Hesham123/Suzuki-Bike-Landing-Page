@@ -1,0 +1,298 @@
+:root {
+    --black: #2f2f2f;
+    --white: #fff;
+    --red: #f83038;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Ubuntu', sans-serif;
+    position: relative;
+    min-height: 100vh;
+    background: linear-gradient(#1c1c1c, #323232);
+    padding: 1.875rem 6.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+body::before {
+    content: "Adventure";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 16vw;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.05);
+}
+
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.875rem 6.25rem;
+}
+
+.logo {
+    max-width: 80px;
+}
+
+.navigation {
+    display: flex;
+    gap: 2.5rem;
+}
+
+.navigation li {
+    list-style: none;
+}
+
+.navigation li a {
+    position: relative;
+    color: var(--white);
+    text-decoration: none;
+    transition: 0.25s;
+}
+
+.navigation li a:hover {
+    color: var(--red);
+}
+
+.content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 6.25rem;
+    z-index: 1;
+}
+
+.content h2 {
+    font-size: 5rem;
+    font-weight: 300;
+    color: var(--white);
+    text-align: center;
+}
+
+.content span {
+    font-weight: 700;
+}
+
+.btn {
+    display: inline-block;
+    background: var(--red);
+    text-decoration: none;
+    color: var(--white);
+    border-radius: 3.125rem;
+    padding: 1rem 2.25rem;
+    margin-top: 1.25rem;
+    font-size: 1.25rem;
+    transition: 0.25s;
+}
+
+.btn:hover {
+    letter-spacing: 4px;
+}
+
+.bike {
+    max-width: 80%;
+    margin-top: 1.875rem;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 1.875rem 6.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer .sci {
+    display: flex;
+    gap: 1.25rem;
+}
+
+.sci li {
+    list-style: none;
+}
+
+.sci li a {
+    color: var(--white);
+    font-size: 2rem;
+    transition: 0.25s;
+}
+
+.sci li a:hover {
+    color: var(--red);
+}
+
+.dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.dots .dot {
+    cursor: pointer;
+    width: 10px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+}
+
+.dots .dot.active {
+    background: var(--white);
+}
+
+.slider .slides {
+    position: absolute;
+    top: 60%;
+    left: 0;
+    transform: translateY(-50%);
+    z-index: 99;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 6.25rem;
+    transition: 0.25s;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.slider .slides.active {
+    opacity: 1;
+    top: 50%;
+}
+
+.slider .slides h2 {
+    font-size: 3rem;
+    color: var(--white);
+}
+
+.slider .slides h2:last-child {
+    text-align: end;
+}
+
+.slider .slides h2 span {
+    color: var(--red);
+    font-size: 0.5em;
+    font-weight: 400;
+    font-style: italic;
+}
+
+/* Media Quieries */
+@media (max-width: 991px) {
+    body {
+        padding: 2.5rem;
+    }
+    .header {
+        padding: 1.25rem 2.5rem;
+    }
+    .slider {
+        position: relative;
+        width: 100%;
+        height: 11.25rem;
+    }
+    .slider .slides {
+        position: absolute;
+        top: 50%;
+        padding: 0;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .slider .slides h2 {
+        font-size: 2.5rem;
+        text-align: center;
+    }
+    .slider .slides h2:last-child {
+        text-align: center;
+    }
+    .bike {
+        max-width: 100%;
+    }
+    .footer {
+        position: relative;
+        margin-top: 3.125rem;
+        padding: 0 2.5rem;
+        flex-direction: column-reverse;
+        gap: 2.5rem;
+    }
+    .content h2 {
+        font-size: 3rem;
+    }
+    .toggle {
+        position: relative;
+        width: 2rem;
+        height: 2.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        z-index: 99999;
+    }
+    .toggle.active {
+        position: fixed;
+        top: 1.875rem;
+        right: 2.5rem;
+    }
+    .toggle::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background: var(--white);
+        transform: translateY(-10px);
+        transition: 0.25s;
+        box-shadow: 0 10px 0 var(--white);
+    }
+    .toggle.active::before {
+        transform: translateY(0) rotate(45deg);
+        box-shadow: 0 0 0 var(--white);
+    }
+    .toggle::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background: var(--white);
+        transform: translateY(10px);
+        transition: 0.25s;
+    }
+    .toggle.active::after {
+        transform: translateY(0) rotate(-45deg);
+    }
+    .navigation{
+    display: none;
+    }
+    .navigation.active {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background: var(--black);
+        z-index: 9999;
+    }
+    .navigation li a {
+        font-size: 1.5rem;
+    }
+}
